@@ -131,7 +131,7 @@ RUN tar cpPzf /mysql.tar.gz /var/lib/mysql
 ADD config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Entry point for the container
-RUN chown -R docker:docker $HOME && chmod +x $HOME/startup.sh && chown -R docker:docker /var/www
+RUN chown -R docker:docker $HOME && chmod +x $HOME/startup.sh
 USER docker
 ENV SHELL /bin/zsh
 WORKDIR /var/www

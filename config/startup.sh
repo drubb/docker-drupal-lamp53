@@ -9,6 +9,9 @@ unset DEBIAN_FRONTEND
 # Start needed services using supervisor
 sudo service supervisor start
 
+# Change owner of web root
+sudo chown -R docker:docker /var/www/
+
 # Run a new shell
 /bin/zsh
 
