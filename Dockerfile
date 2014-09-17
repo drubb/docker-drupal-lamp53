@@ -25,7 +25,7 @@ RUN mkdir -p $HOME && chown -R docker:docker $HOME
 # Install SSH client
 RUN apt-get -yqq install openssh-client
 
-# Install sendmail MTA
+# Install sendmail MTA @TODO: find a lightweight solution
 RUN apt-get -yqq install sendmail
 
 # Install Apache web server
@@ -115,6 +115,11 @@ RUN mkdir /opt/apc && gzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.p
 
 # Add zsh configuration
 ADD config/.zshrc $HOME/.zshrc
+
+# ADD ssh keys needed for connections to external servers
+ADD .ssh $HOME/.ssh
+RUN chmod 0700 $HOME/.ssh && chmod -f 0600 $HOME/.ssh/id_rsa || true && chmod -f 0644 $HOME/.ssh/id_rsa.pub || true
+RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 # Add startup script
 ADD config/startup.sh $HOME/startup.sh
