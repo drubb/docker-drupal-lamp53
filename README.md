@@ -35,7 +35,7 @@ You should have installed the following tools:
 
 * Clone this repository: git clone https://github.com/drubb/phpdev-lamp53.git
 * Make adjustments to Dockerfile and config files, if needed, e.g. for localization
-* Add your ssh keys to ssh folder, if needed for connections to external servers, e.g. repos
+* Add your ssh keys to .ssh folder, if needed for connections to external servers, e.g. repos
 * Optionally, create and populate a web root for your project files, e.g. 'www'
 * Build your docker image, using a suitable tag: docker build -t myuser/myproject .
 * Run your container
@@ -62,6 +62,7 @@ The docker user can use sudo, without a password
 ## One more
 
 DON'T USE THIS SETUP OR PARTS OF IT FOR PRODUCTION ENVIRONMENTS!!!
+
 We don't care for security at all, this stuff is meant for developing environments solely.
 
 ## Have fun!
