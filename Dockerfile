@@ -125,7 +125,7 @@ RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 ADD config/startup.sh $HOME/startup.sh
 
 # Save MySQL initial configuration
-RUN tar cpzf mysql.tar.gz /var/lib/mysql
+RUN tar cpPzf /mysql.tar.gz /var/lib/mysql
 
 # Supervisor configuration
 ADD config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf

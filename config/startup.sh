@@ -4,7 +4,7 @@
 unset DEBIAN_FRONTEND
 
 # Restore initial MySQL configuration on first run
-[ "$(sudo ls -A /var/lib/mysql)" ] || cd /; sudo tar xfzP mysql.tar.gz; cd /var/www
+[ "$(sudo ls -A /var/lib/mysql)" ] || sudo tar xfzP /mysql.tar.gz
 
 # Start needed services using supervisor
 sudo service supervisor start
