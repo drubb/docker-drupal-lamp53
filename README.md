@@ -38,7 +38,7 @@ You should have installed the following tools:
 * Build your docker image, using a suitable tag: docker build -t myuser/myproject .
 * Run your container
 
-Running the container requires that you map some ports from container to host, and mount the folders for web root and mysql data. This is looking a little bit ugly, so myabe you should hide the command inside a shell script:
+Running the container requires that you map some ports from container to host, and mount the folders for web root and mysql data. This is looking a little bit ugly, so maybe you should hide the command inside a shell script:
 
     docker run -ti -h docker \
                -v "$PWD/www":/var/www \
@@ -52,7 +52,7 @@ Running the container requires that you map some ports from container to host, a
 
 If you don't adjust them, the container will use the following default users and passwords:
 
-Docker user: docker, password docker
+Docker user: docker, password docker  
 MySQL root user: root, password root
 
 The docker user can use sudo, without a password
