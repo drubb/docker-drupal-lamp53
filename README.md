@@ -63,6 +63,6 @@ The docker user can use sudo, without a password
 
 DON'T USE THIS SETUP OR PARTS OF IT FOR PRODUCTION ENVIRONMENTS!!!
 
-We don't care for security at all, this stuff is meant for developing environments solely.
+We don't care for security at all, this stuff is meant for development environments solely.
 
 ## Have fun!
