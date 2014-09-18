@@ -54,7 +54,7 @@ Running the container requires that you map some ports from container to host, a
 
 If you don't adjust them, the container will use the following default users and passwords:
 
-Docker user: docker, password docker
+Docker user: docker, no password
 MySQL root user: root, password root
 
 The docker user can use sudo, without a password
