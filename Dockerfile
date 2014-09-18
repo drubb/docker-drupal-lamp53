@@ -11,8 +11,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Expose web root as volume
 VOLUME ["/var/www"]
 
-# Update repositories cache
-RUN apt-get -qq update
+# Update repositories cache and distribution
+RUN apt-get -qq update && apt-get -qqy upgrade
 
 # Install some basic tools needed for deployment
 RUN apt-get -yqq install sudo build-essential debconf-utils locales python-software-properties curl wget unzip patch dkms supervisor
