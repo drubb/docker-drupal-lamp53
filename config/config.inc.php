@@ -6,6 +6,7 @@ $cfg['ServerDefault'] = 1;
 $cfg['UploadDir'] = '/tmp';
 $cfg['SaveDir'] = '';
 $cfg['blowfish_secret'] = 'this_does_not_matter_at_all';
+$cfg['PmaNoRelation_DisableWarning'] = true;
 
 $cfg['Servers'][1]['auth_type'] = 'config';
 $cfg['Servers'][1]['host'] = 'localhost';
