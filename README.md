@@ -20,7 +20,7 @@ The container shares ports 80, 3306 and 9000 with the host, for browsing, access
 * Git (latest version)
 * Drush (stable)
 * ZSH / Oh-My-ZSH
-* PROST drupal deployment scripts, see see https://www.drupal.org/sandbox/axroth/1668300
+* PROST drupal deployment scripts, see https://www.drupal.org/sandbox/axroth/1668300
 * Several command line tools like mc, htop, curl, wget, patch
 
 This is a localized german version, but it should be easy to adjust this
@@ -50,6 +50,39 @@ Running the container requires that you map some ports from container to host, a
                -p 127.0.0.1:3306:3306 \
                -p 127.0.0.1:9000:9000 \
                 myuser/myproject
+
+If one or more ports are already in use on your host system, just assign other port numbers. Here's an example:
+
+    docker run -ti -h docker \
+               -v "$PWD/www":/var/www \
+               -v "$PWD/database":/var/lib/mysql \
+               -p 127.0.0.1:8080:80 \
+               -p 127.0.0.1:3307:3306 \
+               -p 127.0.0.1:9001:9000 \
+                myuser/myproject
+
+In this case, you would be browsing using localhost:8080, and your external connections to database and debugger
+would use the ports 3307 and 9001. You might also assign different IPs, consult the docker documentation for details.
+
+## Working with the container
+
+When you run the container, you're presented a shell and located inside your web root. You can use the tools provided by
+the container, like linux command line tools, mc, git or drush. Keep in mind however, that only your web root (and the
+mysql database) is kept persistent, other things you modify will be gone when you stop the container. So it's almost
+useless to install or update packages, modify config files or storing things in your home directory - except of making
+temporary changes for testing purposes at runtime.
+
+There's another caveat, regarding services running inside the container:
+Services like Apache or MySQL are controlled by Supervisor. You shouldn't stop or restart them using the usual
+linux service commands, because Supervisor would loose control and your services wouldn't be shut down smoothely
+when the container stops. There's however an equivalent Supervisor tool for this purpose, **supervisorctl**.
+
+So don't do this:
+    sudo service apache2 restart
+But replace with:
+    sudo supervisorctl restart apache2
+
+Want to stop the container? Just type **exit**!
 
 ## Passwords
 
