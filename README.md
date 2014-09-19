@@ -20,6 +20,7 @@ The container shares ports 80, 3306 and 9000 with the host, for browsing, access
 * Git (latest version)
 * Drush (stable)
 * ZSH / Oh-My-ZSH
+* PROST drupal deployment scripts, see see https://www.drupal.org/sandbox/axroth/1668300
 * Several command line tools like mc, htop, curl, wget, patch
 
 This is a localized german version, but it should be easy to adjust this

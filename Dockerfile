@@ -69,6 +69,10 @@ RUN  rm phpmyadmin.zip && mv phpMyAdmin*.* /opt/phpmyadmin
 # Install zsh / OH-MY-ZSH
 RUN apt-get -yqq install zsh && git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 
+# Install PROST drupal deployment script, see https://www.drupal.org/sandbox/axroth/1668300
+RUN git clone --branch master http://git.drupal.org/sandbox/axroth/1668300.git /tmp/prost
+RUN chmod +x /tmp/prost/install.sh
+
 # Install some useful cli tools
 RUN apt-get -yqq install mc htop
 
@@ -85,7 +89,7 @@ RUN service mysql start && service mysql stop
 RUN service sendmail start && service sendmail stop
 
 #
-# Step 2: Configuration
+# Step 2: Configuration/tmp/prost
 #
 
 # Localization
@@ -120,10 +124,18 @@ RUN mkdir /opt/apc && gzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.p
 # Add zsh configuration
 ADD config/.zshrc $HOME/.zshrc
 
+# Configure PROST drupal deployment script
+RUN chown docker:docker $HOME/.zshrc
+USER docker
+ENV SHELL /bin/zsh
+RUN export PATH="$HOME/.composer/vendor/bin:$PATH" && cd /tmp/prost && ./install.sh $HOME/.prost
+USER root
+RUN rm -rf /tmp/prost
+
 # ADD ssh keys needed for connections to external servers
 ADD .ssh $HOME/.ssh
 RUN chmod 0700 $HOME/.ssh && chmod -f 0600 $HOME/.ssh/id_rsa || true && chmod -f 0644 $HOME/.ssh/id_rsa.pub || true
-RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
+RUN echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 # Add startup script
 ADD config/startup.sh $HOME/startup.sh
