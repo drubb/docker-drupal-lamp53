@@ -95,7 +95,7 @@ Want to stop the container? Just type **exit**!
 
 If you don't adjust them, the container will use the following default users and passwords:
 
-Docker user: docker, no password
+Docker user: docker, no password  
 MySQL root user: root, password root
 
 The docker user can use sudo, without a password
