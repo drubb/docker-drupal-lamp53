@@ -110,6 +110,10 @@ ADD config/mysql.cnf /etc/mysql/conf.d/mysql.cnf
 # Add phpmyadmin configuration file
 ADD config/config.inc.php /opt/phpmyadmin/config.inc.php
 
+# Add git global configuration files
+ADD config/.gitconfig $HOME/.gitconfig
+ADD config/.gitignore $HOME/.gitignore
+
 # Add apc status script
 RUN mkdir /opt/apc && gzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.php
 

@@ -1,0 +1,7 @@
+[user]
+	email = johndoe@example.com
+	name = John Doe
+[color]
+	ui = true
+[core]
+	excludesfile = '~/.gitignore'
