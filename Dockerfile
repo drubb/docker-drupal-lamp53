@@ -119,7 +119,7 @@ ADD config/.gitconfig $HOME/.gitconfig
 ADD config/.gitignore $HOME/.gitignore
 
 # Add apc status script
-RUN mkdir /opt/apc && gzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.php
+RUN mkdir /opt/apc && gunzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.php
 
 # Add zsh configuration
 ADD config/.zshrc $HOME/.zshrc
