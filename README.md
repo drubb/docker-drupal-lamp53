@@ -72,14 +72,17 @@ mysql database) is kept persistent, other things you modify will be gone when yo
 useless to install or update packages, modify config files or storing things in your home directory - except of making
 temporary changes for testing purposes at runtime.
 
-There's another caveat, regarding services running inside the container:
+There's another caveat, regarding services running inside the container:  
 Services like Apache or MySQL are controlled by Supervisor. You shouldn't stop or restart them using the usual
 linux service commands, because Supervisor would loose control and your services wouldn't be shut down smoothely
 when the container stops. There's however an equivalent Supervisor tool for this purpose, **supervisorctl**.
 
 So don't do this:
+
     sudo service apache2 restart
-But replace with:
+
+Use instead:
+
     sudo supervisorctl restart apache2
 
 Want to stop the container? Just type **exit**!
