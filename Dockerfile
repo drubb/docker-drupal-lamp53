@@ -120,6 +120,9 @@ ADD config/config.inc.php /opt/phpmyadmin/config.inc.php
 ADD config/.gitconfig $HOME/.gitconfig
 ADD config/.gitignore $HOME/.gitignore
 
+# Add drush global configuration file
+ADD config/.drushrc $HOME/.drushrc
+
 # Add apc status script
 RUN mkdir /opt/apc && gunzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.php
 
