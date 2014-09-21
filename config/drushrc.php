@@ -1,5 +1,2 @@
 // Force download of contributed modules to the correct folder, even if non-existent
 $command_specific['dl'] = array('destination' => 'sites/all/modules/contrib');
-
-// Enable persistent drush backups by moving backup folder to web root
-$command_specific['archive-dump'] = array('destination' => '/var/www/.drush-backups');

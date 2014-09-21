@@ -121,7 +121,7 @@ ADD config/.gitconfig $HOME/.gitconfig
 ADD config/.gitignore $HOME/.gitignore
 
 # Add drush global configuration file
-ADD config/.drushrc $HOME/.drushrc
+ADD config/drushrc.php $HOME/.drush/drushrc.php
 
 # Add apc status script
 RUN mkdir /opt/apc && gunzip -c /usr/share/doc/php-apc/apc.php.gz > /opt/apc/apc.php
