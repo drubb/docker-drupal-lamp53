@@ -19,7 +19,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E1DF1F24
 RUN apt-get -qq update && apt-get -qqy upgrade
 
 # Install some basic tools needed for deployment
-RUN apt-get -yqq install apt-utils sudo build-essential debconf-utils locales curl wget unzip patch dkms supervisor vim
+RUN apt-get -yqq install apt-utils sudo build-essential debconf-utils locales curl wget unzip patch dkms supervisor
 
 # Add the docker user
 ENV HOME /home/docker
@@ -78,7 +78,7 @@ RUN git clone --branch master http://git.drupal.org/sandbox/axroth/1668300.git /
 RUN chmod +x /tmp/prost/install.sh
 
 # Install some useful cli tools
-RUN apt-get -yqq install mc htop
+RUN apt-get -yqq install mc htop vim
 
 # Cleanup some things
 RUN apt-get -yqq autoremove; apt-get -yqq autoclean; apt-get clean
