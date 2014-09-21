@@ -15,7 +15,7 @@ VOLUME ["/var/www"]
 RUN apt-get -qq update && apt-get -qqy upgrade
 
 # Install some basic tools needed for deployment
-RUN apt-get -yqq install sudo build-essential debconf-utils locales python-software-properties curl wget unzip patch dkms supervisor
+RUN apt-get -yqq install sudo build-essential debconf-utils locales python-software-properties curl wget unzip patch dkms supervisor vim
 
 # Add the docker user
 ENV HOME /home/docker
