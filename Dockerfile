@@ -147,7 +147,7 @@ RUN chmod 0700 $HOME/.ssh && chmod -f 0600 $HOME/.ssh/id_rsa || true && chmod -f
 RUN echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 # Add startup script
-ADD config/startup.sh $HOME/startup.sh
+ADD startup.sh $HOME/startup.sh
 
 # Save MySQL initial configuration
 RUN tar cpPzf /mysql.tar.gz /var/lib/mysql
