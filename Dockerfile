@@ -25,8 +25,8 @@ RUN mkdir -p $HOME && chown -R docker:docker $HOME
 # Install SSH client
 RUN apt-get -yqq install openssh-client
 
-# Install sendmail MTA @TODO: find a lightweight solution
-RUN apt-get -yqq install sendmail
+# Install ssmtp MTA
+RUN apt-get -yqq install ssmtp
 
 # Install Apache web server
 RUN apt-get -yqq install apache2-mpm-prefork
@@ -64,7 +64,7 @@ USER root
 
 # Install PhpMyAdmin (latest version)
 RUN wget -q -O phpmyadmin.zip http://sourceforge.net/projects/phpmyadmin/files/latest/download && unzip -qq phpmyadmin.zip
-RUN  rm phpmyadmin.zip && mv phpMyAdmin*.* /opt/phpmyadmin
+RUN rm phpmyadmin.zip && mv phpMyAdmin*.* /opt/phpmyadmin
 
 # Install zsh / OH-MY-ZSH
 RUN apt-get -yqq install zsh && git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
@@ -86,10 +86,9 @@ EXPOSE 80 3306 9000
 RUN service apache2 start && service apache2 stop
 RUN service memcached start && service memcached stop
 RUN service mysql start && service mysql stop
-RUN service sendmail start && service sendmail stop
 
 #
-# Step 2: Configuration/tmp/prost
+# Step 2: Configuration
 #
 
 # Localization
@@ -110,6 +109,9 @@ ADD config/php.ini /etc/php5/conf.d/php.ini
 
 # Add additional mysql configuration file
 ADD config/mysql.cnf /etc/mysql/conf.d/mysql.cnf
+
+# Add ssmtp configuration file
+ADD config/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 # Add phpmyadmin configuration file
 ADD config/config.inc.php /opt/phpmyadmin/config.inc.php

@@ -10,6 +10,7 @@ The container shares ports 80, 3306 and 9000 with the host, for browsing, access
 
 * Supervisor, to control multiple services running inside the container
 * OpenSSH client
+* SSMTP, a lightweight smtp MTA
 * Apache 2.2, MySQL 5.5 & PHP 5.3
 * APC opcode cache
 * MemCached service and php extension
@@ -35,7 +36,7 @@ You should have installed the following tools:
 ## Usage
 
 * Clone this repository: git clone https://github.com/drubb/phpdev-lamp53.git
-* Make adjustments to Dockerfile and config files, if needed, e.g. for localization
+* Make adjustments to Dockerfile and config files, if needed, e.g. for localization, git user, mail server, ...
 * Add your ssh keys to .ssh folder, if needed for connections to external servers, e.g. repos
 * Optionally, create and populate a web root for your project files, e.g. 'www'
 * Build your docker image, using a suitable tag: docker build -t myuser/myproject .
@@ -95,7 +96,7 @@ Want to stop the container? Just type **exit**!
 
 If you don't adjust them, the container will use the following default users and passwords:
 
-Docker user: docker, no password  
+Docker user: docker, no password
 MySQL root user: root, password root
 
 The docker user can use sudo, without a password
