@@ -4,7 +4,7 @@
 
 This is a Dockerfile and some configuration files to spin up a local development / runtime environment for Drupal development. It should be suitable for other PHP projects too, with minor adjustments.
 Manage your project files using your favorite host based development tools (IDE, Sass, Compass, Bundler, ...). They are mounted inside the container's web root. MySQL data is kept persistent using another mounted folder.
-The container shares ports 80, 3306 and 9000 with the host, for browsing, access to mysql data and debugging
+The container shares ports 80, 3306 and 9000 with the host, for browsing, access to MySQL data and debugging
 
 ## What's inside?
 
@@ -39,7 +39,7 @@ You should have installed the following tools:
 * Make adjustments to Dockerfile and config files, if needed, e.g. for localization, git user, mail server, ...
 * Add your ssh keys to .ssh folder, if needed for connections to external servers, e.g. repos
 * Optionally, create and populate a web root for your project files, e.g. 'www'
-* Build your docker image, using a suitable tag: docker build -t myuser/myproject .
+* Build your docker image, using a suitable tag: docker build -t myproject .
 * Run your container
 
 Running the container requires that you map some ports from container to host, and mount the folders for web root and mysql data. This is looking a little bit ugly, so maybe you should hide the command inside a shell script:
