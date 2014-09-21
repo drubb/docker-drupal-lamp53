@@ -35,7 +35,7 @@ You should have installed the following tools:
 
 ## Usage
 
-* Clone this repository: git clone https://github.com/drubb/phpdev-lamp53.git
+* Clone this repository: git clone https://github.com/drubb/docker-drupal-lamp53.git
 * Make adjustments to Dockerfile and config files, if needed, e.g. for localization, git user, mail server, ...
 * Add your ssh keys to .ssh folder, if needed for connections to external servers, e.g. repos
 * Optionally, create and populate a web root for your project files, e.g. 'www'
