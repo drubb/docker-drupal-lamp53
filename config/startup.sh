@@ -9,8 +9,10 @@ unset DEBIAN_FRONTEND
 # Start needed services using supervisor
 sudo service supervisor start
 
-# Change owner of web root
+# Set default ownership for home, web root and mysql (might have been modified from outside)
+sudo chown -R docker:docker /home/docker
 sudo chown -R docker:docker /var/www/
+sudo chown -R mysql:mysql /var/lib/mysql
 
 # Run a new shell
 /bin/zsh
