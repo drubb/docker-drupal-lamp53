@@ -44,26 +44,29 @@ You should have installed the following tools:
 
 Running the container requires that you map some ports from container to host, and mount the folders for web root and mysql data. This is looking a little bit ugly, so maybe you should hide the command inside a shell script:
 
-    docker run -ti -h docker \
+    docker run -ti -h myhostname \
                -v "$PWD/www":/var/www \
                -v "$PWD/database":/var/lib/mysql \
                -p 127.0.0.1:80:80 \
                -p 127.0.0.1:3306:3306 \
                -p 127.0.0.1:9000:9000 \
-                myuser/myproject
+                myproject
 
 If one or more ports are already in use on your host system, just assign other port numbers. Here's an example:
 
-    docker run -ti -h docker \
+    docker run -ti -h myhostname \
                -v "$PWD/www":/var/www \
                -v "$PWD/database":/var/lib/mysql \
                -p 127.0.0.1:8080:80 \
                -p 127.0.0.1:3307:3306 \
                -p 127.0.0.1:9001:9000 \
-                myuser/myproject
+                myproject
 
 In this case, you would be browsing using localhost:8080, and your external connections to database and debugger
 would use the ports 3307 and 9001. You might also assign different IPs, consult the docker documentation for details.
+
+Want some shellscript magic? Replace `myhostname` and `myproject` by `${PWD##*/}`
+to use the last part of your project's folder path instead.
 
 ## Working with the container
 
