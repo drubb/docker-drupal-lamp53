@@ -11,11 +11,15 @@ ENV DEBIAN_FRONTEND noninteractive
 # Expose web root as volume
 VOLUME ["/var/www"]
 
+# Add additional repostories needed later
+RUN echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu precise main" >> /etc/apt/sources.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E1DF1F24
+
 # Update repositories cache and distribution
 RUN apt-get -qq update && apt-get -qqy upgrade
 
 # Install some basic tools needed for deployment
-RUN apt-get -yqq install sudo build-essential debconf-utils locales python-software-properties curl wget unzip patch dkms supervisor vim
+RUN apt-get -yqq install apt-utils sudo build-essential debconf-utils locales curl wget unzip patch dkms supervisor vim
 
 # Add the docker user
 ENV HOME /home/docker
@@ -52,7 +56,7 @@ RUN pecl install uploadprogress
 RUN apt-get -yqq install memcached php5-memcached
 
 # Install GIT (latest version)
-RUN add-apt-repository ppa:git-core/ppa && apt-get -qq update && apt-get -yqq install git
+RUN apt-get -yqq install git
 
 # Install composer (latest version)
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
