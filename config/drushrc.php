@@ -1,4 +1,5 @@
 <?php
 
-// Force download of contributed modules to the correct folder, even if non-existent
-$command_specific['dl'] = array('destination' => 'sites/all/modules/contrib');
+// Add your favorite drush configuration options. Following is an example:
+$options['shell-aliases']['clear'] = 'cache-clear all';
+
