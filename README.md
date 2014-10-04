@@ -22,7 +22,7 @@ The container shares ports 80, 3306 and 9000 with the host, for browsing, access
 * Drush (stable)
 * ZSH / Oh-My-ZSH
 * PROST drupal deployment scripts, see https://www.drupal.org/sandbox/axroth/1668300
-* Several command line tools like mc, htop, curl, wget, patch
+* Several command line tools like mc, htop, curl, wget, patch, vim
 
 This is a localized german version, but it should be easy to adjust this
 
@@ -39,7 +39,7 @@ You should have installed the following tools:
 * Make adjustments to Dockerfile and config files, if needed, e.g. for localization, git user, mail server, ...
 * Add your ssh keys to .ssh folder, if needed for connections to external servers, e.g. repos
 * Optionally, create and populate a web root for your project files, e.g. 'www'
-* Build your docker image, using a suitable tag: docker build -t myproject .
+* Build your docker image, using a suitable tag: docker build -t myproject . (don't leave out the dot!)
 * Run your container
 
 Running the container requires that you map some ports from container to host, and mount the folders for web root and mysql data. This is looking a little bit ugly, so maybe you should hide the command inside a shell script:
@@ -100,6 +100,7 @@ Want to stop the container? Just type **exit**!
 If you don't adjust them, the container will use the following default users and passwords:
 
 Docker user: docker, no password
+
 MySQL root user: root, password root
 
 The docker user can use sudo, without a password
