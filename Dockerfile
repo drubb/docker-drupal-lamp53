@@ -87,10 +87,6 @@ RUN apt-get -yqq autoremove; apt-get -yqq autoclean; apt-get clean
 # Expose some ports to the host system (web server, MySQL, Xdebug)
 EXPOSE 80 3306 9000
 
-# Run all services once for necessary initializations @TODO: Check if really necessary
-RUN service apache2 start && service apache2 stop
-RUN service memcached start && service memcached stop
-
 #
 # Step 2: Configuration
 #
