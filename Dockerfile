@@ -114,6 +114,9 @@ ADD config/php.ini /etc/php5/conf.d/php.ini
 # Add additional mysql configuration file
 ADD config/mysql.cnf /etc/mysql/conf.d/mysql.cnf
 
+# Add memcached configuration file
+ADD config/memcached.conf /etc/memcached.conf
+
 # Add ssmtp configuration file
 ADD config/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
