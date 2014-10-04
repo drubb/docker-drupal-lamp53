@@ -35,10 +35,11 @@ RUN apt-get -yqq install ssmtp
 # Install Apache web server
 RUN apt-get -yqq install apache2-mpm-prefork
 
-# Install MySQL server
+# Install MySQL server and save initial configuration
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 RUN apt-get -yqq install mysql-server
+RUN service mysql start && service mysql stop & tar cpPzf /mysql.tar.gz /var/lib/mysql
 
 # Install PHP5 with Xdebug, APC and other modules
 RUN apt-get -yqq install libapache2-mod-php5 php5-mcrypt php5-dev php5-mysql php5-curl php5-gd php5-intl php5-xdebug php-apc
@@ -89,7 +90,6 @@ EXPOSE 80 3306 9000
 # Run all services once for necessary initializations @TODO: Check if really necessary
 RUN service apache2 start && service apache2 stop
 RUN service memcached start && service memcached stop
-RUN service mysql start && service mysql stop
 
 #
 # Step 2: Configuration
@@ -151,9 +151,6 @@ RUN echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 # Add startup script
 ADD startup.sh $HOME/startup.sh
-
-# Save MySQL initial configuration
-RUN tar cpPzf /mysql.tar.gz /var/lib/mysql
 
 # Supervisor configuration
 ADD config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
