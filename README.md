@@ -91,7 +91,7 @@ Use instead:
 
 Besides your web root, there are two special paths you can lookup in your browser:
 
-You can use **PhpMyAdmin** under /phpmyadmin, and view the status of **APC** opcode cache under /apc.
+You can use **PhpMyAdmin** under /phpmyadmin, and view the status of **APC** opcode cache under /opcache.
 
 Want to stop the container? Just type **exit**!
 
