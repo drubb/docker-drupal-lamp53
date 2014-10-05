@@ -53,6 +53,9 @@ RUN apt-get -yqq install libpcre3-dev
 # Install PECL uploadprogress extension
 RUN pecl install uploadprogress
 
+# Update APC to latest version
+RUN printf "\n" | pecl update apc
+
 # Install memcached service
 RUN apt-get -yqq install memcached php5-memcached
 
