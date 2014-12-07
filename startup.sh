@@ -9,8 +9,9 @@ unset DEBIAN_FRONTEND
 # Start needed services using supervisor
 sudo service supervisor start
 
-# Set default ownership for home, web root and mysql (might have been modified from outside)
+# Set default ownership for home, ssh keys, web root and mysql (might have been modified from outside)
 sudo chown -R docker:docker /home/docker
+sudo chmod 0700 ~/.ssh && sudo chmod -f 0600 ~/.ssh/id_rsa || true && sudo chmod -f 0644 ~/.ssh/id_rsa.pub || true
 sudo chown -R docker:docker /var/www/
 sudo chown -R mysql:mysql /var/lib/mysql
 

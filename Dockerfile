@@ -145,7 +145,6 @@ RUN rm -rf /tmp/prost
 
 # ADD ssh keys needed for connections to external servers
 ADD .ssh $HOME/.ssh
-RUN chmod 0700 $HOME/.ssh && chmod -f 0600 $HOME/.ssh/id_rsa || true && chmod -f 0644 $HOME/.ssh/id_rsa.pub || true
 RUN echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 # Add startup script
