@@ -139,7 +139,7 @@ ADD config/.zshrc $HOME/.zshrc
 RUN chown docker:docker $HOME/.zshrc
 USER docker
 ENV SHELL /bin/zsh
-RUN export PATH="$HOME/.composer/vendor/bin:$PATH" && cd /tmp/prost && ./install.sh $HOME/.prost
+RUN export PATH="$HOME/.composer/vendor/bin:$PATH" && cd /tmp/prost && ./install.sh -noupdate $HOME/.prost
 USER root
 RUN rm -rf /tmp/prost
 
