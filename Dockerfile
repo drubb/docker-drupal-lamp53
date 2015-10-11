@@ -70,8 +70,8 @@ USER docker
 RUN composer global require drush/drush:6.*
 USER root
 
-# Install PhpMyAdmin (latest version)
-RUN wget -q -O phpmyadmin.zip https://github.com/phpmyadmin/phpmyadmin/archive/STABLE.zip && unzip -qq phpmyadmin.zip
+# Install PhpMyAdmin (latest php 5.3 compatible version)
+RUN wget -q -O phpmyadmin.zip https://github.com/phpmyadmin/phpmyadmin/archive/MAINT_4_4_15.zip && unzip -qq phpmyadmin.zip
 RUN rm phpmyadmin.zip && mv phpmyadmin-STABLE /opt/phpmyadmin
 
 # Install zsh / OH-MY-ZSH
