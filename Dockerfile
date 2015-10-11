@@ -72,7 +72,7 @@ USER root
 
 # Install PhpMyAdmin (latest php 5.3 compatible version)
 RUN wget -q -O phpmyadmin.zip https://github.com/phpmyadmin/phpmyadmin/archive/MAINT_4_4_15.zip && unzip -qq phpmyadmin.zip
-RUN rm phpmyadmin.zip && mv phpmyadmin-STABLE /opt/phpmyadmin
+RUN rm phpmyadmin.zip && mv phpmyadmin-MAINT_4_4_15 /opt/phpmyadmin
 
 # Install zsh / OH-MY-ZSH
 RUN apt-get -yqq install zsh && git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
