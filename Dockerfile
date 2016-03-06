@@ -67,7 +67,7 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 
 # Install drush (latest stable)
 USER docker
-RUN composer global require drush/drush:6.*
+RUN sudo composer global require drush/drush:6.*
 USER root
 
 # Install PhpMyAdmin (latest php 5.3 compatible version)
@@ -82,7 +82,7 @@ RUN git clone --branch master http://git.drupal.org/sandbox/axroth/1668300.git /
 RUN chmod +x /tmp/prost/install.sh
 
 # Install some useful cli tools
-RUN apt-get -yqq install mc htop vim
+RUN apt-get -yqq install mc htop vim nano net-tools mlocate
 
 # Cleanup some things
 RUN apt-get -yqq autoremove; apt-get -yqq autoclean; apt-get clean
