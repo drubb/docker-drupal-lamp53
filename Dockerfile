@@ -6,7 +6,7 @@ MAINTAINER Boris Böhne <info@drubb.de>
 #
 
 # Set frontend. We'll clean this later on!
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND noninteractive
 
 # Expose web root as volume
 VOLUME ["/var/www"]
