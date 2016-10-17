@@ -3,6 +3,9 @@
 # Add composer binaries to path
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
+# Disable composer warning about xdebug presence
+export COMPOSER_DISABLE_XDEBUG_WARN=1
+
 # Configuration for oh-my-zsh
 export ZSH_THEME=essembeh
 export ZSH="$HOME/.oh-my-zsh"
