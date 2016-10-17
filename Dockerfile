@@ -39,7 +39,7 @@ RUN apt-get -yqq install apache2-mpm-prefork
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
 RUN apt-get -yqq install mysql-server
-RUN service mysql start && service mysql stop && tar cpPzf /mysql.tar.gz /var/lib/mysql
+RUN service mysql start && sleep 5 && service mysql stop && tar cpPzf /mysql.tar.gz /var/lib/mysql
 
 # Install PHP5 with Xdebug, APC and other modules
 RUN apt-get -yqq install libapache2-mod-php5 php5-mcrypt php5-dev php5-mysql php5-curl php5-gd php5-intl php5-xdebug php-apc
