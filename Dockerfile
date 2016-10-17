@@ -65,9 +65,9 @@ RUN apt-get -yqq install git
 # Install composer (latest version)
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
-# Install drush (latest stable)
+# Install drush (latest stable for php 5.3)
 USER docker
-RUN sudo composer global require drush/drush:6.*
+RUN sudo composer global require "drush/drush:7.*"
 USER root
 
 # Install PhpMyAdmin (latest php 5.3 compatible version)
